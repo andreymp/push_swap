@@ -7,6 +7,12 @@ RM =	rm -rf
 
 SRC =   push_swap.c		\
 		utils.c			\
+		check_input.c	\
+		main.c			\
+		push.c			\
+		swap.c			\
+		rotate.c		\
+		reverse_rotate.c	\
 
 INC = 	-I push_swap.h		\
 		-I libft/libft.h 	\

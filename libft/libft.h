@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:59:46 by jobject           #+#    #+#             */
-/*   Updated: 2021/10/26 20:29:33 by jobject          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:08:50 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		ft_putendl_fd(char	*s, int fd);
 void		ft_putstr_fd(char	*s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 char		**ft_split(char const	*s, char c);
-t_list		*ft_lstnew(int	content);
+t_list		*ft_lstnew(int content);
 void		ft_lstadd_front(t_list	**lst, t_list	*new);
 int			ft_lstsize(t_list	*lst);
 t_list		*ft_lstlast(t_list	*lst);
@@ -63,6 +63,6 @@ void		ft_lstadd_back(t_list	**lst, t_list	*new);
 void		ft_lstdelone(t_list	*lst, void (*del)(int));
 void		ft_lstclear(t_list	**lst, void (*del)(int));
 void		ft_lstiter(t_list	*lst, void (*f)(int));
-t_list		*ft_lstmap(t_list	*lst, int (*f)(int), void	(*del)(int));
+t_list		*ft_lstmap(t_list	*lst, int (*f)(int), void (*del)(int));
 
 #endif

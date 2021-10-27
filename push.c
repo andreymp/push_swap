@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 14:03:02 by jobject           #+#    #+#             */
-/*   Updated: 2021/10/27 20:09:15 by jobject          ###   ########.fr       */
+/*   Created: 2021/10/27 20:12:02 by jobject           #+#    #+#             */
+/*   Updated: 2021/10/27 20:12:04 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "push_swap.h"
 
-t_list	*ft_lstmap(t_list	*lst, int (*f)(int), void (*del)(int))
+void	ft_pa(t_list	**lsta, t_list	**lstb)
 {
-	t_list	*new;
 	t_list	*temp;
 
-	new = NULL;
-	if (!lst)
-		return (new);
-	while (lst)
-	{
-		temp = ft_lstnew(f(lst->content));
-		if (!temp)
-		{
-			ft_lstclear(&new, del);
-			return (0);
-		}
-		ft_lstadd_back(&new, temp);
-		lst = lst->next;
-	}
-	return (new);
+	if (!*lstb)
+		return ;
+	temp = *lstb;
+	*lstb = (*lstb)->next;
+	ft_lstadd_front(lsta, temp);
+	ft_putendl_fd("pa", 1);
+}
+
+void	ft_pb(t_list	**lsta, t_list	**lstb)
+{
+	t_list	*temp;
+
+	if (!*lsta)
+		return ;
+	temp = *lsta;
+	*lsta = (*lsta)->next;
+	ft_lstadd_front(lstb, temp);
+	ft_putendl_fd("pb", 1);
 }

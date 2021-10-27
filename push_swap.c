@@ -1,76 +1,109 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/27 20:12:10 by jobject           #+#    #+#             */
+/*   Updated: 2021/10/27 20:13:07 by jobject          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	error_message(void)
+int	is_sorted(t_list	*lst)
 {
-	ft_putendl_fd("Error", 1);
-	exit(EXIT_FAILURE);
-}
+	t_list	*tmp;
 
-void check_input(char	*str)
-{
-	long long int	i;
-	long long int	temp;
-
-	i = 0;
-	while (*(str + i))
+	if (!lst || !lst->next)
+		return (0);
+	tmp = lst;
+	while (tmp->next)
 	{
-		if (!ft_isdigit(*(str + i)) && *(str + i) != '-')
-			error_message();
-		i++;
+		if (tmp->content > tmp->next->content)
+			return (0);
+		tmp = tmp->next;
 	}
-	temp = ft_atoi_long(str);
-	if (temp < INT_MIN || temp > INT_MAX)
-		error_message();
+	return (1);
 }
 
-void	check_dup(int argc, char	**argv)
+static void	size_3(t_list	**lsta)
 {
-	int i;
-	int j;
+	t_list	*a;
 
-	i = 1;
-	while (i < argc - 1)
+	a = *lsta;
+	while (!is_sorted(a))
 	{
-		j = i + 1;
-		while (j < argc)
-		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
-				error_message();
-			j++;
-		}
-		i++;
+		if (a->content < a->next->content)
+			ft_rra(&a, 1);
+		else if (a->content == ft_max(a) && a->next->content == ft_min(a))
+			ft_ra(&a, 1);
+		else
+			ft_sa(&a, 1);
 	}
 }
 
-void	stack(char	*str, t_list	**lst)
+static void	search(t_list	**lst, int (*f)(t_list *))
 {
-	t_list	*p;
+	t_list	*a;
 
-	if (!lst)
-		*lst = ft_lstnew(ft_atoi(str));
+	a = *lst;
+	while (a->content != f(a))
+	{
+		if (a->next->content != f(a) && a->next->next->content != f(a))
+			ft_rra(&a, 1);
+		else
+			ft_ra(&a, 1);
+	}
+}
+
+static void	size_45(t_list	**lsta)
+{
+	t_list	*a;
+	t_list	*b;
+	int		size;
+
+	a = *lsta;
+	b = (t_list *) malloc (sizeof(t_list));
+	size = ft_lstsize(a);
+	if (size == 5)
+	{
+		search(&a, ft_min);
+		ft_pb(&a, &b);
+	}
+	search(&a, ft_max);
+	ft_pb(&a, &b);
+	while (ft_lstsize(a) != 3)
+		ft_pb(&a, &b);
+	size_3(&a);
+	while (ft_lstsize(a) != size)
+		ft_pa(&a, &b);
+	free(b);
+}
+
+void	sort_small_stack(t_list	**lsta)
+{
+	t_list	*a;
+	int		size;
+
+	if (!(*lsta)->next)
+		succes_message(lsta);
+	a = *lsta;
+	size = ft_lstsize(a);
+	if (size == 2)
+	{
+		ft_sa(lsta, 1);
+		succes_message(lsta);
+	}
+	if (size == 3)
+	{
+		size_3(&a);
+		succes_message(lsta);
+	}
 	else
 	{
-		p = ft_lstnew(ft_atoi(str));
-		ft_lstadd_front(lst, p);
-	}
-}
-
-int main(int argc, char	**argv)
-{
-	int i = 1;
-	t_list	*lst;
-
-	if (argc < 2)
-		error_message();
-	while (i < argc)
-		check_input(argv[i++]);
-	check_dup(argc, argv);
-	i = 1;
-	while (i < argc)
-		stack(argv[i++], &lst);
-	while (lst)
-	{
-		printf("%d\n", lst->content);
-		lst = lst->next;
+		size_45(&a);
+		succes_message(lsta);
 	}
 }
