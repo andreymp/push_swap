@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:06 by jobject           #+#    #+#             */
-/*   Updated: 2021/10/27 20:12:37 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/08 20:52:49 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void			ft_rra(t_list	**lst, int flag);
 void			ft_rrb(t_list	**lst, int flag);
 void			ft_rrr(t_list	**lsta, t_list	**lstb);
 void			sort_small_stack(t_list	**lsta);
+void			long_sort(t_list	**lst);
+void			size_3(t_list	**lsta);
 
 #endif

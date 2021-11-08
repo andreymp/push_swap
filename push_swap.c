@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:10 by jobject           #+#    #+#             */
-/*   Updated: 2021/10/27 20:13:07 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/08 20:52:25 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_sorted(t_list	*lst)
 	return (1);
 }
 
-static void	size_3(t_list	**lsta)
+void	size_3(t_list	**lsta)
 {
 	t_list	*a;
 

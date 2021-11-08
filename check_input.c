@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:18 by jobject           #+#    #+#             */
-/*   Updated: 2021/10/27 20:13:55 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/08 21:15:17 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ void	stack(char	*str, t_list	**lst)
 	else
 	{
 		p = ft_lstnew(ft_atoi(str));
-		ft_lstadd_front(lst, p);
+		ft_lstadd_back(lst, p);
 	}
 }
