@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:15 by jobject           #+#    #+#             */
-/*   Updated: 2021/11/08 20:56:20 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/09 20:28:48 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char	**argv)
 	t_list	*lst;
 	int		i;
 
-	// check(argc, argv);
+	check(argc, argv);
 	i = 1;
 	while (i < argc)
 		stack(argv[i++], &lst);
@@ -27,6 +27,6 @@ int	main(int argc, char	**argv)
 	if (i <= 5)
 		sort_small_stack(&lst);
 	else
-		long_sort(&lst);
+		long_long_sort(&lst);
 	return (0);
 }

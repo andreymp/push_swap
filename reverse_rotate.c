@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:11:22 by jobject           #+#    #+#             */
-/*   Updated: 2021/10/27 20:11:24 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/09 13:43:54 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,34 @@
 
 void	ft_rra(t_list	**lst, int flag)
 {
-	t_list	*tmp;
-	int		size;
-	int		i;
+	// t_list	*tmp;
+	// int		size;
+	// int		i;
 
-	if (!*lst || !(*lst)->next)
+	// if (!*lst || !(*lst)->next)
+	// 	return ;
+	// tmp = *lst;
+	// i = 0;
+	// size = ft_lstsize(tmp) - 1;
+	// while (i < size)
+	// {
+	// 	ft_ra(lst, 0);
+	// 	i++;
+	// }
+	t_list		*first_list;
+	t_list		*rotate_list;
+	t_list		*penultimate_list;
+
+	if ((*lst) == NULL || (*lst)->next == NULL)
 		return ;
-	tmp = *lst;
-	i = 0;
-	size = ft_lstsize(tmp) - 1;
-	while (i < size)
-	{
-		ft_ra(lst, 0);
-		i++;
-	}
+	first_list = *lst;
+	penultimate_list = *lst;
+	while (penultimate_list->next->next != NULL)
+		penultimate_list = penultimate_list->next;
+	rotate_list = penultimate_list->next;
+	penultimate_list->next = NULL;
+	rotate_list->next = first_list;
+	*lst = rotate_list;
 	if (flag)
 		ft_putendl_fd("rra", 1);
 }

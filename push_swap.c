@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:10 by jobject           #+#    #+#             */
-/*   Updated: 2021/11/08 20:52:25 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/09 13:49:24 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,67 +30,57 @@ int	is_sorted(t_list	*lst)
 
 void	size_3(t_list	**lsta)
 {
-	t_list	*a;
-
-	a = *lsta;
-	while (!is_sorted(a))
+	while (!is_sorted(*lsta))
 	{
-		if (a->content < a->next->content)
-			ft_rra(&a, 1);
-		else if (a->content == ft_max(a) && a->next->content == ft_min(a))
-			ft_ra(&a, 1);
+		if ((*lsta)->content < (*lsta)->next->content)
+			ft_rra(lsta, 1);
+		else if ((*lsta)->content == ft_max(*lsta) && (*lsta)->next->content == ft_min(*lsta))
+			ft_ra(lsta, 1);
 		else
-			ft_sa(&a, 1);
+			ft_sa(lsta, 1);
 	}
 }
 
 static void	search(t_list	**lst, int (*f)(t_list *))
 {
-	t_list	*a;
-
-	a = *lst;
-	while (a->content != f(a))
+	while ((*lst)->content != f(*lst))
 	{
-		if (a->next->content != f(a) && a->next->next->content != f(a))
-			ft_rra(&a, 1);
+		if ((*lst)->next->content != f(*lst) && (*lst)->next->next->content != f(*lst))
+			ft_rra(lst, 1);
 		else
-			ft_ra(&a, 1);
+			ft_ra(lst, 1);
 	}
 }
 
 static void	size_45(t_list	**lsta)
 {
-	t_list	*a;
 	t_list	*b;
 	int		size;
 
-	a = *lsta;
 	b = (t_list *) malloc (sizeof(t_list));
-	size = ft_lstsize(a);
+	size = ft_lstsize(*lsta);
 	if (size == 5)
 	{
-		search(&a, ft_min);
-		ft_pb(&a, &b);
+		search(lsta, ft_min);
+		ft_pb(lsta, &b);
 	}
-	search(&a, ft_max);
-	ft_pb(&a, &b);
-	while (ft_lstsize(a) != 3)
-		ft_pb(&a, &b);
-	size_3(&a);
-	while (ft_lstsize(a) != size)
-		ft_pa(&a, &b);
+	search(lsta, ft_max);
+	ft_pb(lsta, &b);
+	while (ft_lstsize(*lsta) != 3)
+		ft_pb(lsta, &b);
+	size_3(lsta);
+	while (ft_lstsize(*lsta) != size)
+		ft_pa(lsta, &b);
 	free(b);
 }
 
 void	sort_small_stack(t_list	**lsta)
 {
-	t_list	*a;
 	int		size;
 
 	if (!(*lsta)->next)
 		succes_message(lsta);
-	a = *lsta;
-	size = ft_lstsize(a);
+	size = ft_lstsize(*lsta);
 	if (size == 2)
 	{
 		ft_sa(lsta, 1);
@@ -98,12 +88,12 @@ void	sort_small_stack(t_list	**lsta)
 	}
 	if (size == 3)
 	{
-		size_3(&a);
+		size_3(lsta);
 		succes_message(lsta);
 	}
 	else
 	{
-		size_45(&a);
+		size_45(lsta);
 		succes_message(lsta);
 	}
 }

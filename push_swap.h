@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:06 by jobject           #+#    #+#             */
-/*   Updated: 2021/11/08 20:52:49 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/09 21:20:32 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,9 @@ void			ft_rrr(t_list	**lsta, t_list	**lstb);
 void			sort_small_stack(t_list	**lsta);
 void			long_sort(t_list	**lst);
 void			size_3(t_list	**lsta);
+int				make_sorted_mas(t_list	*lst);
+void			long_long_sort(t_list	**lst);
+int				make_sorted_rev_mas(t_list	*lst);
+void			print(t_list	*lst); // Delete
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:02 by jobject           #+#    #+#             */
-/*   Updated: 2021/11/08 19:18:43 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/09 13:17:03 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ void	ft_pb(t_list	**lsta, t_list	**lstb)
 		return ;
 	temp = *lsta;
 	*lsta = (*lsta)->next;
-	if (!*lstb)
-		*lstb = ft_lstnew(temp->content);
-	else
-		ft_lstadd_front(lstb, temp);
+	ft_lstadd_front(lstb, temp);
 	ft_putendl_fd("pb", 1);
 }
