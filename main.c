@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:15 by jobject           #+#    #+#             */
-/*   Updated: 2021/11/09 20:28:48 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/10 20:29:12 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int argc, char	**argv)
 	i = ft_lstsize(lst);
 	if (i <= 5)
 		sort_small_stack(&lst);
+	else if (i <= 300)
+		long_sort(&lst);
 	else
 		long_long_sort(&lst);
 	return (0);

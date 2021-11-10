@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:18 by jobject           #+#    #+#             */
-/*   Updated: 2021/11/08 21:15:17 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/10 21:08:14 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	check_input(char	*str)
 	long long int	temp;
 
 	i = 0;
+	if (!*str)
+		error_message();
 	while (*(str + i))
 	{
 		if (!ft_isdigit(*(str + i)) && *(str + i) != '-')

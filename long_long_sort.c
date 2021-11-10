@@ -1,70 +1,97 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   long_long_sort.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 13:10:35 by jobject           #+#    #+#             */
+/*   Updated: 2021/11/10 20:39:09 by jobject          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+#include <unistd.h>
+
+static void	move(t_list	**b, int mid)
+{
+	int		i;
+	t_list	*tmp;
+
+	i = 0;
+	tmp = *b;
+	while (tmp && tmp->content >= mid)
+	{	
+		i++;
+		tmp = tmp->next;
+	}
+	if (i < ft_lstsize(*b) / 2)
+		while (i--)
+			ft_ra(b, 1);
+	else
+		while (i++ != ft_lstsize(*b))
+			ft_rra(b, 1);
+}
+
+static void	chunks(t_list	**a, t_list	**b, int temp, int tmp)
+{
+	while (temp - 1)
+	{	
+		if ((*a)->content < tmp)
+		{
+			ft_pb(a, b);
+			temp--;
+		}
+		else
+			move(a, tmp);
+	}
+}
 
 static void	push_to_b(t_list	**a, t_list	**b)
 {
-	int		mid;
-	int		half;
+	int	chunk;
+	int	*mas;
+	int	size;
+	int	tmp;
+	int	temp;
 
-	while (ft_lstsize(*a) > 2)
+	size = ft_lstsize(*a);
+	mas = make_sorted_rev_mas(*a);
+	chunk = size / 10;
+	while (*a && chunk != size)
 	{
-		half = ft_lstsize(*a) / 2;
-		mid = make_sorted_mas(*a);
-		while (half)
-		{
-			if ((*a)->content < mid)
-			{
-				ft_pb(a, b);
-				half--;
-			}
-			else
-				ft_ra(a, 1);
-		}
+		temp = size / 10;
+		tmp = mas[chunk - 1];
+		chunks(a, b, temp, tmp);
+		chunk += (size / 10);
 	}
-	if (!is_sorted(*a))
-		ft_sa(a, 1);
+	while (*a)
+		ft_pb(a, b);
+	free(mas);
 }
 
 static void	push_to_a(t_list	**a, t_list	**b)
 {
-	// int		i;
-	// t_list	*tmp;
-	int		mid;
-	int		half;
+	t_list	*tmp;
+	int		i;
 
-	// tmp = *b;
-	while (ft_lstsize(*b) > 2)
+	while (*b)
 	{
-		half = ft_lstsize(*b) / 2;
-		mid = make_sorted_rev_mas(*b);
-		while (half)
+		i = 0;
+		tmp = *b;
+		while (tmp->content != ft_max(*b))
 		{
-			if ((*b)->content > mid)
-			{
-				ft_pa(a, b);
-				half--;
-			}
-			else
-				ft_rb(b, 1);
+			i++;
+			tmp = tmp->next;
 		}
-		// i = 0;
-		// tmp = *b;
-		// while (tmp->content != ft_max(tmp))
-		// {	
-		// 	i++;
-		// 	tmp = tmp->next;
-		// }
-		// if (i < ft_lstsize(*b) / 2)
-		// 	while (i--)
-		// 		ft_rb(b, 1);
-		// else
-		// 	while (i++ != ft_lstsize(*b))
-		// 		ft_rrb(b, 1);
-		// ft_pa(a, b);
+		if (i < ft_lstsize(*b) / 2)
+			while (i--)
+				ft_rb(b, 1);
+		else
+			while (i++ != ft_lstsize(*b))
+				ft_rrb(b, 1);
+		ft_pa(a, b);
 	}
-	if (is_sorted(*b))
-		ft_sb(b, 1);
-	ft_pa(a, b);
-	ft_pa(a, b);
 }
 
 void	long_long_sort(t_list	**lst)
@@ -74,13 +101,6 @@ void	long_long_sort(t_list	**lst)
 	b = NULL;
 	push_to_b(lst, &b);
 	push_to_a(lst, &b);
-	// while (!is_sorted(*lst))
-	// {
-	// 	if ((*lst)->content > (*lst)->next->content)
-	// 		ft_sa(lst, 1);
-	// 	ft_ra(lst, 1);
-	// }                  TO_THINK_ABOUT
-	print(*lst);
 	if (b)
 		free (b);
 }

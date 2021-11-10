@@ -14,6 +14,7 @@ SRC =   push_swap.c		\
 		rotate.c		\
 		reverse_rotate.c	\
 		long_long_sort.c		\
+		long_sort.c		\
 		sort_utils.c	\
 
 INC = 	-I push_swap.h		\

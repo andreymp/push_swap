@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:10 by jobject           #+#    #+#             */
-/*   Updated: 2021/11/09 13:49:24 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/10 21:02:44 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	size_3(t_list	**lsta)
 	{
 		if ((*lsta)->content < (*lsta)->next->content)
 			ft_rra(lsta, 1);
-		else if ((*lsta)->content == ft_max(*lsta) && (*lsta)->next->content == ft_min(*lsta))
+		else if ((*lsta)->content == ft_max(*lsta)
+			&& (*lsta)->next->content == ft_min(*lsta))
 			ft_ra(lsta, 1);
 		else
 			ft_sa(lsta, 1);
@@ -45,7 +46,8 @@ static void	search(t_list	**lst, int (*f)(t_list *))
 {
 	while ((*lst)->content != f(*lst))
 	{
-		if ((*lst)->next->content != f(*lst) && (*lst)->next->next->content != f(*lst))
+		if ((*lst)->next->content != f(*lst)
+			&& (*lst)->next->next->content != f(*lst))
 			ft_rra(lst, 1);
 		else
 			ft_ra(lst, 1);
@@ -69,7 +71,9 @@ static void	size_45(t_list	**lsta)
 	while (ft_lstsize(*lsta) != 3)
 		ft_pb(lsta, &b);
 	size_3(lsta);
-	while (ft_lstsize(*lsta) != size)
+	ft_pa(lsta, &b);
+	ft_ra(lsta, 1);
+	if (size == 5)
 		ft_pa(lsta, &b);
 	free(b);
 }
