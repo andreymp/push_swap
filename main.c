@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:15 by jobject           #+#    #+#             */
-/*   Updated: 2021/11/10 20:29:12 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/10 21:22:42 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int	main(int argc, char	**argv)
 		long_sort(&lst);
 	else
 		long_long_sort(&lst);
+	if (lst)
+		ft_lstclear(&lst, del);
 	return (0);
 }
