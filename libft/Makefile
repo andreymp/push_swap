@@ -2,7 +2,7 @@ NAME = libft.a
 DOT_H = libft.h
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -MMD
 AR = ar rcs
 RM = rm -f
 
@@ -52,7 +52,9 @@ FILES_B = 	ft_lstnew.c \
 	  		ft_lstmap.c
 
 MAN =		${FILES:.c=.o}
+DEP =		$(FILES:.c=.d)
 BON =		${FILES_B:.c=.o}
+DEP_B =		${FILES_B:.c=.d}
 
 ${NAME}: 
 		${CC} ${CFLAGS} -c ${FILES} -I${DOT_H}
@@ -65,7 +67,7 @@ bonus:
 all: ${NAME}
 
 clean:
-	${RM} ${MAN} ${BON}
+	${RM} ${MAN} ${BON} $(DEP) $(DEP_B)
 
 fclean: clean
 		${RM} ${NAME}
@@ -73,3 +75,6 @@ fclean: clean
 re: fclean all
 
 .PHONY: bonus all clean fclean re
+
+-include $(DEP)
+-include $(DEP_B)
