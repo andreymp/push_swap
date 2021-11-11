@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:18 by jobject           #+#    #+#             */
-/*   Updated: 2021/11/10 21:08:14 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/11 16:02:02 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	check(int argc, char	**argv)
 	int	i;
 
 	if (argc < 2)
-		error_message();
+		exit(EXIT_FAILURE);
 	i = 1;
 	while (i < argc)
 		check_input(argv[i++]);

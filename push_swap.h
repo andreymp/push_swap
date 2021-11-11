@@ -6,7 +6,7 @@
 /*   By: jobject <jobject@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 20:12:06 by jobject           #+#    #+#             */
-/*   Updated: 2021/11/10 20:25:08 by jobject          ###   ########.fr       */
+/*   Updated: 2021/11/11 15:59:27 by jobject          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "libft/libft.h"
 # include <limits.h>
-# include <stdio.h> //delete
 
 long long int	ft_atoi_long(const char	*nptr);
 void			error_message(void);
