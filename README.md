@@ -20,7 +20,7 @@ optimized data sorting.
 ## Output
 The ptogram will output instructions that sort stack or error message in case of error.
 ## Running
-1. Run `make` to compile \
+1. Run `make` to compile
 2. Run `./push_swap [integers to sort]`
 ## Results
 100 integers: ~750 instructions. \
