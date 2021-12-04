@@ -13,7 +13,7 @@ optimized data sorting.
 **pb** : take the first element at the top of a and put it at the top of b. Do nothing if a is empty. \
 **ra** : shift up all elements of stack a by 1. The first element becomes the last one. \
 **rb** : shift up all elements of stack b by 1. The first element becomes the last one. \
-**rr** : ra and rb at the same time.
+**rr** : ra and rb at the same time. \
 **rra** : shift down all elements of stack a by 1. The last element becomes the first one. \
 **rrb** : shift down all elements of stack b by 1. The last element becomes the first one. \
 **rrr** : rra and rrb at the same time.
